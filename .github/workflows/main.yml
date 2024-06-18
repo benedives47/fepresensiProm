@@ -16,4 +16,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          name: fe-presensi
+          script: |
+            docker build -t my-app .
+            docker run -d -p 5000:5000 --name my-nextjs-app 
