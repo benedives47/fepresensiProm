@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
       {/* <Provider store={store}> */}
       <ChakraProvider theme={theme}>
         <BaseLayout>
-          <Button colorScheme="red"> Button</Button>
+          <Button colorScheme="yellow">Test CI CDButton</Button>
           <Component {...pageProps} />
         </BaseLayout>
       </ChakraProvider>
