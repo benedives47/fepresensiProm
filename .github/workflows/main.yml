@@ -9,13 +9,12 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Checkout
+      -
+        name: Checkout
         uses: actions/checkout@v4
-      - name: Build and push
+      -
+        name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: Dockerfile
-          script: |
-            docker build -t my-app .
-            docker run -d -p 5000:5000 --name my-nextjs-app 
+          file: ./Dockerfile
