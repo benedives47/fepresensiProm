@@ -18,4 +18,4 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          name: fe-presensi
+          container_name: fe-presensi
