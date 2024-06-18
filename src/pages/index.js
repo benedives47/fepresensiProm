@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import InputField from "@presensi/_globals/components/form-input/input-field";
+import InputField from "@presensi/app/_globals/components/form-input/input-field";
 
 const inter = Inter({ subsets: ["latin"] });
 

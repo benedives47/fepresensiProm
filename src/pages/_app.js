@@ -1,5 +1,5 @@
 import { Button, ChakraProvider } from "@chakra-ui/react";
-import BaseLayout from "@presensi/_globals/layouts/base-layout";
+import BaseLayout from "@presensi/app/_globals/layouts/base-layout";
 // import { store } from "@presensi/redux/store";
 import "@presensi/styles/globals.css";
 import theme from "@presensi/styles/theme";
