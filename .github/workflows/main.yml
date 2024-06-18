@@ -9,11 +9,9 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      -
-        name: Build and push
+      - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
