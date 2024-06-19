@@ -37,7 +37,7 @@ const Presensi = () => {
       <Flex flexDir="column" alignItems="center" gap="10px">
         <Image w="50%" src="./assets/performer.webp" alt="performer prompt" />
         <Heading as="h4" fontSize="16px">
-          24/06/2022
+          24/06/2024
         </Heading>
         <Flex mt="8px" flexDir="column" alignItems="center">
           <Text mb="8px" color="gray.400" fontWeight={500}>
