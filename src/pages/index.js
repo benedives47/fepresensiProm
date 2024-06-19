@@ -1,14 +1,5 @@
-import { Inter } from "next/font/google";
-import InputField from "@presensi/app/_globals/components/form-input/input-field";
-
-const inter = Inter({ subsets: ["latin"] });
+import Auth from "@presensi/app/page-modules/auth";
 
 export default function Home() {
-  return (
-    <>
-      <main className={`${inter.className}`}>
-        <InputField />
-      </main>
-    </>
-  );
+  return <Auth />;
 }
