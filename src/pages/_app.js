@@ -1,11 +1,13 @@
-import { Button, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import BaseLayout from "@presensi/app/_globals/layouts/base-layout";
 // import { store } from "@presensi/redux/store";
 import "@presensi/styles/globals.css";
 import theme from "@presensi/styles/theme";
 import Head from "next/head";
 // import { Provider } from "react-redux";
+import { Inter } from "next/font/google";
 
+const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -21,8 +23,9 @@ export default function App({ Component, pageProps }) {
       {/* <Provider store={store}> */}
       <ChakraProvider theme={theme}>
         <BaseLayout>
-          <Button colorScheme="yellow">Test CI CD Button (2)</Button>
-          <Component {...pageProps} />
+          <main className={`${inter.className}`}>
+            <Component {...pageProps} />
+          </main>
         </BaseLayout>
       </ChakraProvider>
       {/* </Provider> */}
