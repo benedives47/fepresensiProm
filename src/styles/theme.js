@@ -30,7 +30,7 @@ const theme = extendTheme({
           base: "14px",
           md: "16px",
         },
-        backgroundColor: "background",
+        backgroundColor: "#131313",
         color: "#ffffff",
       },
     }),
@@ -39,13 +39,10 @@ const theme = extendTheme({
     FormLabel: {
       baseStyle: {
         fontWeight: 600,
-        fontSize: "16px",
+        fontSize: "12px",
       },
     },
     Input: {
-      baseStyle: {
-        backgroundColor: "red",
-      },
       variants: {
         outline: {
           field: {

@@ -8,16 +8,15 @@ const BaseLayout = ({ children }) => {
       <Flex flexDir="column" alignItems="center" justifyContent="center">
         <Box
           w={{ base: "full", sm: "75%", lg: "50%" }}
-          minH="100vh"
           bg="rgba(0, 0, 0, 0.5)"
-          border={BORDER.DEFAULT}
-          rounded={RADIUS.SM}
           position="relative"
         >
           <Image
             src="./assets/background-invitation.webp"
             alt="image"
             position="absolute"
+            border={BORDER.DEFAULT}
+            rounded={RADIUS.SM}
           />
           <Flex
             top="0"
@@ -25,14 +24,18 @@ const BaseLayout = ({ children }) => {
             flexDir="column"
             alignItems="center"
             justifyContent="center"
-            pt="20px"
+            pt={{ base: "100px", md: "200px" }}
             textAlign="center"
             color="white"
-            p="40px"
+            px="40px"
           >
-            ASD
+            <Image w="70%" src="./assets/logo-prom.webp" alt="image" />
           </Flex>
-          <Box zIndex="1" p="100px">
+          <Box
+            zIndex="10"
+            pt={{ base: "20px", lg: "100px" }}
+            px={{ base: "50px", sm: "60px", md: "100px" }}
+          >
             {children}
           </Box>
         </Box>

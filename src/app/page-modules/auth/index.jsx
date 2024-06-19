@@ -6,14 +6,14 @@ import { FormProvider, useForm } from "react-hook-form";
 const Auth = () => {
   const methods = useForm();
   return (
-    <Flex flexDir="column" py="20px">
+    <Flex flexDir="column" py="10px">
       <FormProvider {...methods}>
-        <Flex flexDir="column" gap="20px">
+        <Flex flexDir="column" gap="10px">
           <InputField
             id="username"
             name="password"
             label="Email / Username"
-            size="sm"
+            size="xs"
             type="text"
             required
           />
@@ -21,10 +21,10 @@ const Auth = () => {
             id="password"
             name="password"
             label="Password"
-            size="sm"
+            size="xs"
             required
           />
-          <Button size="sm" mt="20px" colorScheme="blue" shadow="sm">
+          <Button size="sm" mt="10px" colorScheme="purple">
             Log In
           </Button>
         </Flex>

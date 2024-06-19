@@ -42,7 +42,7 @@ const InputField = ({
   return (
     <FormControl isInvalid={Boolean(error)}>
       {label && (
-        <FormLabel fontSize="14px" htmlFor={id}>
+        <FormLabel htmlFor={id}>
           {label}{" "}
           {required && (
             <Text color="orange" fontWeight="600" as="span">
