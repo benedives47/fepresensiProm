@@ -9,17 +9,15 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      -
-        name: Build and push
+      - name: Build and push
         run: docker build -t fe-image:latest .
 
       - name: Stop container
         run: docker stop fe-container
       - name: Remove Container
         run: docker rm fe-container
-        
+
       - name: Run Docker container
-        run: docker run -d --name fe-container -p 80:80 fe-image:latest
+        run: docker run -d --name fe-container -p 3002:3002 fe-image:latest
