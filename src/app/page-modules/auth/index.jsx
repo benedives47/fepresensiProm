@@ -5,10 +5,21 @@ import { FormProvider, useForm } from "react-hook-form";
 
 const Auth = () => {
   const methods = useForm();
+  const { handleSubmit } = methods;
+
+  const onSubmit = (data) => {
+    console.log("data", data);
+  };
+
   return (
     <Flex flexDir="column" py="10px">
       <FormProvider {...methods}>
-        <Flex flexDir="column" gap="10px">
+        <Flex
+          as="form"
+          onSubmit={handleSubmit(onSubmit)}
+          flexDir="column"
+          gap="10px"
+        >
           <InputField
             id="username"
             name="password"
@@ -24,7 +35,7 @@ const Auth = () => {
             size="xs"
             required
           />
-          <Button size="sm" mt="10px" colorScheme="purple">
+          <Button type="submit" size="sm" mt="10px" colorScheme="purple">
             Log In
           </Button>
         </Flex>
