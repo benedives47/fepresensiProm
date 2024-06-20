@@ -1,16 +1,10 @@
-import { EErrorMessage } from "@/jobs-type/configuration/error.type";
 import { useToast } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 const useResponse = () => {
   const router = useRouter();
   const toast = useToast();
-
-  const shouldRedirect = useMemo(
-    () => [EErrorMessage.NOT_AUTHORIZED, EErrorMessage.NOT_FOUND],
-    []
-  );
 
   const showToast = useCallback(
     (title, status, message) => {
@@ -76,7 +70,7 @@ const useResponse = () => {
           break;
       }
     },
-    [router, shouldRedirect, showToast]
+    [router, showToast]
   );
 
   return { handleSuccess, handleError };
