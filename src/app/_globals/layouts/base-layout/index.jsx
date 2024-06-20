@@ -34,7 +34,7 @@ const BaseLayout = ({ children }) => {
           <Box
             zIndex="10"
             pt={{ base: "20px", lg: "100px" }}
-            px={{ base: "50px", sm: "60px", md: "100px" }}
+            px={{ base: "60px", sm: "70px", md: "110px" }}
           >
             {children}
           </Box>
