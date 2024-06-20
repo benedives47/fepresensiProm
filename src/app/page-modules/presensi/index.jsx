@@ -1,7 +1,27 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
-import React from "react";
+import { Flex, Text } from "@chakra-ui/react";
+import usePresention from "@presensi/app/_globals/hooks/usePresention";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import SuccessUpdate from "./_components/success-update";
+import LoadingScreen from "@presensi/app/_globals/components/loader/loading-screen";
+import { SUCCESS_MESSAGE } from "@presensi/app/_globals/constant/success-response.constant";
+import AlreadyUpdate from "./_components/already-update";
 
 const Presensi = () => {
+  const router = useRouter();
+
+  const { updatePresention, pending, successMessage } = usePresention();
+
+  console.log("router", router);
+
+  useEffect(() => {
+    if (router?.query?.id) {
+      updatePresention({ id: router?.query?.id });
+    }
+  }, [router?.query?.id, updatePresention]);
+
+  console.log("error", successMessage);
+
   return (
     <Flex
       justifyContent="center"
@@ -9,25 +29,14 @@ const Presensi = () => {
       position="relative"
       gap="30px"
     >
-      <Flex flexDir="column" alignItems="center">
-        <Heading textAlign="center">Welcome</Heading>
-        <Text
-          fontSize="16px"
-          textAlign="center"
-          color="summer-gold.500"
-          fontWeight={700}
-        >
-          Muhammad Ansari Christiani
-        </Text>
-        <Text
-          fontSize="14px"
-          textAlign="center"
-          color="gray.500"
-          fontWeight={500}
-        >
-          Your check in has been successful
-        </Text>
-      </Flex>
+      {pending && <LoadingScreen text="Please Wait ..." />}
+      {/* {success && <SuccessUpdate />} */}
+      {/* {error && <FailedUpdate />} */}
+      {successMessage === SUCCESS_MESSAGE.ALREADY_PRESENT && <AlreadyUpdate />}
+      {successMessage === SUCCESS_MESSAGE.PRESENT_SUCCESS && <SuccessUpdate />}
+
+      <SuccessUpdate />
+
       <Flex flexDir="column" alignItems="center" gap="10px">
         <Flex mt="8px" flexDir="column" alignItems="center">
           <Text fontSize="14px" mb="8px" color="gray.400" fontWeight={500}>

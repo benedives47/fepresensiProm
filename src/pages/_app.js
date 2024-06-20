@@ -1,11 +1,11 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import BaseLayout from "@presensi/app/_globals/layouts/base-layout";
-// import { store } from "@presensi/redux/store";
 import "@presensi/styles/globals.css";
 import theme from "@presensi/styles/theme";
 import Head from "next/head";
-// import { Provider } from "react-redux";
 import { Inter } from "next/font/google";
+import { Provider } from "react-redux";
+import { store } from "@presensi/app/redux/store";
 
 const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
@@ -20,15 +20,15 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Provider store={store}> */}
       <ChakraProvider theme={theme}>
-        <BaseLayout>
-          <main className={`${inter.className}`}>
-            <Component {...pageProps} />
-          </main>
-        </BaseLayout>
+        <Provider store={store}>
+          <BaseLayout>
+            <main className={`${inter.className}`}>
+              <Component {...pageProps} />
+            </main>
+          </BaseLayout>
+        </Provider>
       </ChakraProvider>
-      {/* </Provider> */}
     </>
   );
 }

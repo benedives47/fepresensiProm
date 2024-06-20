@@ -6,7 +6,6 @@ const initialState = {
   pending: false,
   error: null,
   success: false,
-  verificationSuccess: null,
 };
 
 export const AUTH_REDUCER = createReducer(initialState, (builder) => {

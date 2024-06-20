@@ -1,10 +1,9 @@
-import { decryptString } from "@/jobs-helper/decipher.helper";
-import { ECookies } from "@/jobs-type/configuration/cookies.type";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { BASE_URL } from "../constant/api-collection.constant";
 
 const AXIOS_INSTANCE = axios.create({
-  baseURL: process.env["NEXT_PUBLIC_BASE_URL"],
+  baseURL: BASE_URL,
 });
 
 const devLogger = (message) => {
@@ -15,13 +14,10 @@ const devLogger = (message) => {
 
 // Request INTERCEPTOR
 const onRequest = (config) => {
-  let token = Cookies.get(ECookies.ENCRYPTED_JWT);
+  const token = Cookies.get("act");
   const { method, url, headers } = config;
 
-  if (token) {
-    token = decryptString(token);
-    headers["Authorization"] = `Bearer ${token}`;
-  }
+  headers["Authorization"] = `Bearer ${token}`;
 
   devLogger(`[API] : ${method?.toUpperCase()} ${url} | Request`);
   return config;

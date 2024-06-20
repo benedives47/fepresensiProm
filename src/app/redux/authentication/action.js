@@ -8,8 +8,7 @@ export const REQUEST_SIGN_IN = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await REQUEST.post(API_COLLECTION.AUTH.LOGIN, payload);
-      console.log("response", response);
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error);
     }
