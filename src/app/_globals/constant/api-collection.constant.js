@@ -1,4 +1,4 @@
-export const BASE_URL = "http://194.238.18.214:3000";
+export const BASE_URL = "http://api.summerscapeasia.com:3000";
 
 export const API_COLLECTION = {
   AUTH: {

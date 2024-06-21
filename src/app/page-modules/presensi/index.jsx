@@ -10,9 +10,8 @@ import AlreadyUpdate from "./_components/already-update";
 const Presensi = () => {
   const router = useRouter();
 
-  const { updatePresention, pending, successMessage } = usePresention();
-
-  console.log("router", router);
+  const { data, updatePresention, pending, error, successMessage } =
+    usePresention();
 
   useEffect(() => {
     if (router?.query?.id) {
@@ -20,7 +19,16 @@ const Presensi = () => {
     }
   }, [router?.query?.id, updatePresention]);
 
-  console.log("error", successMessage);
+  console.log("data", data);
+
+  useEffect(() => {
+    if (error) {
+      router.push({
+        pathname: "/",
+        query: { id: router?.query?.id },
+      });
+    }
+  }, [error, router]);
 
   return (
     <Flex
@@ -30,12 +38,12 @@ const Presensi = () => {
       gap="30px"
     >
       {pending && <LoadingScreen text="Please Wait ..." />}
-      {/* {success && <SuccessUpdate />} */}
-      {/* {error && <FailedUpdate />} */}
-      {successMessage === SUCCESS_MESSAGE.ALREADY_PRESENT && <AlreadyUpdate />}
-      {successMessage === SUCCESS_MESSAGE.PRESENT_SUCCESS && <SuccessUpdate />}
-
-      <SuccessUpdate />
+      {successMessage === SUCCESS_MESSAGE.ALREADY_PRESENT && (
+        <AlreadyUpdate data={data.data} />
+      )}
+      {successMessage === SUCCESS_MESSAGE.PRESENT_SUCCESS && (
+        <SuccessUpdate data={data.data} />
+      )}
 
       <Flex flexDir="column" alignItems="center" gap="10px">
         <Flex mt="8px" flexDir="column" alignItems="center">

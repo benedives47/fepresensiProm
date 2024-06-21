@@ -17,7 +17,7 @@ const onRequest = (config) => {
   const token = Cookies.get("act");
   const { method, url, headers } = config;
 
-  headers["Authorization"] = `Bearer ${token}`;
+  headers["Authorization"] = token;
 
   devLogger(`[API] : ${method?.toUpperCase()} ${url} | Request`);
   return config;

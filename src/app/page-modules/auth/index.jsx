@@ -1,57 +1,32 @@
-import { Button, Flex } from "@chakra-ui/react";
-import InputField from "@presensi/app/_globals/components/form-input/input-field";
-import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { validateLogin } from "./auth.validation";
+import { Flex } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import useAuthentication from "@presensi/app/_globals/hooks/useAuthentication";
+import Cookies from "js-cookie";
+import LoginForm from "./_components/login-form";
+import LoginSuccess from "./_components/login-success";
 
 const Auth = () => {
-  const methods = useForm({
-    resolver: yupResolver(validateLogin),
-  });
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods;
+  const { signIn, success } = useAuthentication();
+  const [isActive, setIsActive] = useState(success);
 
-  const { signIn } = useAuthentication();
+  useEffect(() => {
+    const isActivated = Cookies.get("act");
+    if (isActivated || success) {
+      setIsActive(true);
+    }
+  }, [success]);
 
   const onSubmit = (data) => {
     signIn(data);
   };
 
   return (
-    <Flex flexDir="column" py="10px">
-      <FormProvider {...methods}>
-        <Flex
-          as="form"
-          onSubmit={handleSubmit(onSubmit)}
-          flexDir="column"
-          gap="10px"
-        >
-          <InputField
-            id="username"
-            name="password"
-            label="Email / Username"
-            size="xs"
-            type="text"
-            error={errors?.username?.message}
-            required
-          />
-          <InputField
-            id="password"
-            name="password"
-            label="Password"
-            size="xs"
-            error={errors?.password?.message}
-            required
-          />
-          <Button type="submit" size="sm" mt="10px" colorScheme="purple">
-            Log In
-          </Button>
-        </Flex>
-      </FormProvider>
+    <Flex flexDir="column" py="10px" position="relative">
+      {isActive ? (
+        <LoginSuccess />
+      ) : (
+        <LoginForm setIsActive={setIsActive} onSubmit={onSubmit} />
+      )}
     </Flex>
   );
 };

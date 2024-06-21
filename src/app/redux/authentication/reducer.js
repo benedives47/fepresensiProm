@@ -13,6 +13,7 @@ export const AUTH_REDUCER = createReducer(initialState, (builder) => {
     // SIGN IN REDUCER
     .addCase(REQUEST_SIGN_IN.pending, (state) => {
       state.pending = true;
+      state.success = false;
     })
     .addCase(REQUEST_SIGN_IN.fulfilled, (state, { payload }) => {
       state.pending = false;
