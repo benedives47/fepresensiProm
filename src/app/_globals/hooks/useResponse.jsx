@@ -1,9 +1,7 @@
 import { useToast } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import { useCallback } from "react";
 
 const useResponse = () => {
-  const router = useRouter();
   const toast = useToast();
 
   const showToast = useCallback(
@@ -28,7 +26,7 @@ const useResponse = () => {
   );
 
   const handleError = useCallback(
-    (errorCode, message, redirect = true) => {
+    (errorCode, message) => {
       switch (errorCode) {
         case 401:
           // Unathourized
@@ -56,9 +54,6 @@ const useResponse = () => {
           // Client Error
           console.log("Error 400", message);
           showToast("Oops..", "warning", message);
-          if (redirect && shouldRedirect.includes(message)) {
-            router.back();
-          }
           break;
         default:
           // Unknown
@@ -70,7 +65,7 @@ const useResponse = () => {
           break;
       }
     },
-    [router, showToast]
+    [showToast]
   );
 
   return { handleSuccess, handleError };

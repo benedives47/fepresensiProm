@@ -5,6 +5,7 @@ import {
   PRESENTION_SELECTOR_COLLECTION,
   REQUEST_PRESENTION,
 } from "@presensi/app/redux/presention";
+import { ERROR_MESSAGE } from "../constant/success-response.constant";
 
 const usePresention = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +20,13 @@ const usePresention = () => {
         if (res.meta.requestStatus === "fulfilled") {
           handleSuccess("Successfully logged in");
         } else if (res.meta.requestStatus === "rejected") {
-          handleError(500, res.payload.code);
+          console.log("res", res);
+          handleError(
+            400,
+            res.payload.response.statusText === ERROR_MESSAGE.UNAUTHORIZED
+              ? "Please, do login first"
+              : res.payload.response.statusText
+          );
         }
       });
     },

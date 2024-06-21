@@ -19,6 +19,7 @@ export const PRESENTION_REDUCER = createReducer(initialState, (builder) => {
       state.pending = false;
       state.success = true;
       state.data = payload;
+      state.successMessage = payload.info;
     })
     .addCase(REQUEST_PRESENTION.rejected, (state, { payload }) => {
       state.pending = false;

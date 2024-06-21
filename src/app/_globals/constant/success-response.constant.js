@@ -5,3 +5,7 @@ export const SUCCESS_MESSAGE = {
   PRESENT_SUCCESS: "PRESENT_SUCCESS",
   ALREADY_PRESENT: "ALREADY_PRESENT",
 };
+
+export const ERROR_MESSAGE = {
+  UNAUTHORIZED: "Unauthorized",
+};
