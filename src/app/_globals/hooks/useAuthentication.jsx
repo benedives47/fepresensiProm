@@ -27,6 +27,10 @@ const useAuthentication = () => {
               pathname: "/presensi",
               query: { id: router?.query?.id },
             });
+          } else if (router?.query?.redirectTo) {
+            router.push({
+              pathname: router?.query?.redirectTo,
+            });
           }
         } else if (res.meta.requestStatus === "rejected") {
           handleError(

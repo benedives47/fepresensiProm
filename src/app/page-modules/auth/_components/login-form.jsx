@@ -5,7 +5,7 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { validateLogin } from "../auth.validation";
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ pending, onSubmit }) => {
   const methods = useForm({
     resolver: yupResolver(validateLogin),
   });
@@ -39,7 +39,13 @@ const LoginForm = ({ onSubmit }) => {
           error={errors?.password?.message}
           required
         />
-        <Button type="submit" size="sm" mt="10px" colorScheme="purple">
+        <Button
+          isLoading={pending}
+          type="submit"
+          size="sm"
+          mt="10px"
+          colorScheme="purple"
+        >
           Log In
         </Button>
       </Flex>
