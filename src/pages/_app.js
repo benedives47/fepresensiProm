@@ -22,11 +22,15 @@ export default function App({ Component, pageProps }) {
       </Head>
       <ChakraProvider theme={theme}>
         <Provider store={store}>
-          <BaseLayout>
-            <main className={`${inter.className}`}>
+          <main className={`${inter.className}`}>
+            {Component.getLayout ? (
               <Component {...pageProps} />
-            </main>
-          </BaseLayout>
+            ) : (
+              <BaseLayout>
+                <Component {...pageProps} />
+              </BaseLayout>
+            )}
+          </main>
         </Provider>
       </ChakraProvider>
     </>

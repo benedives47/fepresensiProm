@@ -6,5 +6,6 @@ export const API_COLLECTION = {
   },
   PESERTA: {
     UPDATE: "/api/peserta/status",
+    LIST: "/api/peserta",
   },
 };

@@ -6,7 +6,7 @@ import LoginForm from "./_components/login-form";
 import LoginSuccess from "./_components/login-success";
 
 const Auth = () => {
-  const { signIn, success } = useAuthentication();
+  const { signIn, success, pending } = useAuthentication();
   const [isActive, setIsActive] = useState(success);
 
   useEffect(() => {
@@ -25,7 +25,11 @@ const Auth = () => {
       {isActive ? (
         <LoginSuccess />
       ) : (
-        <LoginForm setIsActive={setIsActive} onSubmit={onSubmit} />
+        <LoginForm
+          pending={pending}
+          setIsActive={setIsActive}
+          onSubmit={onSubmit}
+        />
       )}
     </Flex>
   );
