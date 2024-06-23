@@ -33,7 +33,7 @@ const AlreadyUpdate = ({ data }) => {
           Looks like you&apos;ve already checked in before
         </Text>
         <Flex gap="10px">
-          {data?.qtypink && (
+          {data?.qtypink > 0 && (
             <Flex>
               <Image
                 src="/assets/flowers/pink.svg"
@@ -45,7 +45,7 @@ const AlreadyUpdate = ({ data }) => {
               </Text>{" "}
             </Flex>
           )}
-          {data?.qtyred && (
+          {data?.qtyred > 0 && (
             <Flex>
               <Image src="/assets/flowers/red.svg" alt="red" w="22px" />
               <Text as="span" color="red.500">
@@ -53,7 +53,7 @@ const AlreadyUpdate = ({ data }) => {
               </Text>
             </Flex>
           )}
-          {data?.qtywhite && (
+          {data?.qtywhite > 0 && (
             <Flex>
               <Image src="/assets/flowers/white.svg" alt="red" w="16px" />
               <Text as="span" color="white.500">
