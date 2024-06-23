@@ -19,8 +19,6 @@ const Presensi = () => {
     }
   }, [router?.query?.id, updatePresention]);
 
-  console.log("data", data);
-
   useEffect(() => {
     if (error) {
       router.push({

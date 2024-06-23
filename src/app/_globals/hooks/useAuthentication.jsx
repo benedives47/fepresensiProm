@@ -33,9 +33,10 @@ const useAuthentication = () => {
             });
           }
         } else if (res.meta.requestStatus === "rejected") {
+          console.log("res", res);
           handleError(
             res.payload.response.status,
-            res.payload.response.statusText
+            res.payload.response.data.errors
           );
         }
       });

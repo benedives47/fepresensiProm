@@ -31,6 +31,7 @@ const useResponse = () => {
         case 401:
           // Unathourized
           console.log("Error 401", message);
+          showToast("Oops..", "warning", message);
           break;
         case 403:
           // Denied
